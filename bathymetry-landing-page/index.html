@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Satellite-derived shallow-water bathymetry using classical and quantum machine learning.">
+  <title>Bathymetry — Depth from Light</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="nav shell">
+    <a class="brand" href="#top" aria-label="Bathymetry home"><span class="brand-mark"></span>BATHYMETRY / 01</a>
+    <nav aria-label="Primary navigation">
+      <a href="#results">Results</a><a href="#method">Method</a><a href="#regions">Regions</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero shell">
+      <div class="hero-copy">
+        <p class="eyebrow">Satellite-derived · shallow water · 0–30 m</p>
+        <h1>Reading depth<br>from <em>light.</em></h1>
+        <p class="lede">A comparative study of classical and variational quantum models for estimating coastal depth from blue and green satellite reflectance.</p>
+        <div class="hero-actions"><a class="button" href="#results">Explore results <span>↓</span></a><span class="sample-note">4,548 shallow-water observations</span></div>
+      </div>
+      <div class="sonar" aria-label="Abstract bathymetric depth visualization">
+        <div class="depth depth-1"><span>0 m</span></div><div class="depth depth-2"><span>10 m</span></div><div class="depth depth-3"><span>20 m</span></div><div class="depth depth-4"><span>30 m</span></div>
+        <div class="ping"></div><p>Optical signal<br><b>↓ water column</b></p>
+      </div>
+      <div class="hero-index"><span>LAT 25.5682</span><span>LON 54.3719</span><span>R² 0.4836</span></div>
+    </section>
+
+    <section class="ticker" aria-label="Project highlights"><div><span>06 spectral features</span><span>08 regression models</span><span>03 coastal regions</span><span>01 shared objective</span><span>06 spectral features</span><span>08 regression models</span></div></section>
+
+    <section class="intro shell section">
+      <p class="section-no">01 / THE QUESTION</p>
+      <div><h2>Can reflected colour reveal the shape of the seafloor?</h2><p>Traditional bathymetric surveys are accurate, but expensive and difficult to scale. This project tests whether engineered optical features—derived from blue and green bands—can estimate shallow-water depth, and whether emerging quantum models can compete with established regression techniques.</p></div>
+    </section>
+
+    <section class="results section" id="results">
+      <div class="shell">
+        <div class="section-head"><div><p class="section-no">02 / MODEL BENCHMARK</p><h2>The leaderboard</h2></div><p>One held-out test split · metres · higher R² is better</p></div>
+        <div class="metric-tabs" role="tablist" aria-label="Choose metric">
+          <button class="active" data-metric="r2" role="tab" aria-selected="true">R² score</button><button data-metric="mae" role="tab" aria-selected="false">MAE</button><button data-metric="rmse" role="tab" aria-selected="false">RMSE</button>
+        </div>
+        <div class="chart" id="model-chart" aria-live="polite"></div>
+        <div class="result-callout"><span class="result-rank">01</span><div><p class="eyebrow">Best overall classical model</p><h3>MLP explains 48.36% of held-out variance.</h3></div><p>SVR records the lowest average absolute error at <b>4.7868 m</b>. Quantum Method 3 closes much of the gap with target scaling and an affine readout.</p></div>
+      </div>
+    </section>
+
+    <section class="method shell section" id="method">
+      <p class="section-no">03 / PIPELINE</p>
+      <div class="method-grid">
+        <div class="method-copy"><h2>From pixel<br>to prediction.</h2><p>Six spectral signals become a regression estimate of water depth. Every model is evaluated on the same 80/20 split with MAE, RMSE, and R².</p></div>
+        <ol class="steps">
+          <li><span>01</span><div><b>Filter</b><p>Restrict observations to the 0–30 m shallow-water range.</p></div></li>
+          <li><span>02</span><div><b>Engineer</b><p>Blue, green, log transforms, band ratio, and Stumpf ratio.</p></div></li>
+          <li><span>03</span><div><b>Train</b><p>Five classical regressors and three variational quantum approaches.</p></div></li>
+          <li><span>04</span><div><b>Evaluate</b><p>Compare error in metres and explained variance on held-out data.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="regions section" id="regions">
+      <div class="shell">
+        <div class="section-head"><div><p class="section-no">04 / REGIONAL SIGNAL</p><h2>One ocean, different conditions.</h2></div><p>Sample balance matters. Regional results are exploratory.</p></div>
+        <div class="region-grid">
+          <article><div class="map-dot gulf"></div><span class="region-count">4,067 samples</span><h3>Arabian Sea / Gulf</h3><p>MLP leads regional R² at <strong>0.5168</strong>.</p></article>
+          <article><div class="map-dot hormuz"></div><span class="region-count">54 samples</span><h3>Strait of Hormuz</h3><p>Random Forest reaches <strong>0.8251</strong>, but the sample is too small for a strong claim.</p></article>
+          <article><div class="map-dot bengal"></div><span class="region-count">427 samples</span><h3>Bay of Bengal</h3><p>SVR leads regional R² at <strong>0.4106</strong>.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="quantum shell section">
+      <div class="quantum-card">
+        <div><p class="section-no">05 / QUANTUM TRACK</p><h2>Method 3 changes the conversation.</h2></div>
+        <div class="q-score"><strong>0.4631</strong><span>R² score</span></div>
+        <p>Target standardization and an affine readout lift the third variational model to MAE 5.1573 m and RMSE 6.5028 m—competitive with the classical benchmark, though not the overall leader.</p>
+      </div>
+    </section>
+
+    <section class="caveat shell section">
+      <p class="section-no">06 / READ THIS HONESTLY</p>
+      <div><h2>A promising experiment,<br>not yet an operational map.</h2><p>The current evidence uses one random split. Spatially adjacent observations may appear in both train and test sets, making performance optimistic.</p></div>
+      <ul><li>Dataset provenance and depth units still need verification.</li><li>Spatial cross-validation is the essential next test.</li><li>Reported error remains roughly 5–6.5 m across a 30 m range.</li></ul>
+    </section>
+  </main>
+
+  <footer class="footer shell"><div><span class="brand-mark"></span><b>Bathymetry / Depth from Light</b></div><p>Classical + quantum machine learning · exploratory research project</p><a href="#top">Back to surface ↑</a></footer>
+  <script src="app.js"></script>
+</body>
+</html>
