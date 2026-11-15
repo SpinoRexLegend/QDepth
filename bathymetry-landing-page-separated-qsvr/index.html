@@ -9,13 +9,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="qsvr.css">
+  <link rel="stylesheet" href="qsvr-separate.css">
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
+  <div class="scroll-line" aria-hidden="true"><span id="scroll-progress"></span></div>
   <header class="nav shell">
     <a class="brand" href="#top" aria-label="Bathymetry home"><span class="brand-mark"></span>BATHYMETRY / 01</a>
     <nav aria-label="Primary navigation">
-      <a href="#results">Results</a><a href="#method">Method</a><a href="#regions">Regions</a>
+      <a href="#results">Results</a><a href="#method">Method</a><a href="#qsvr">QSVR</a><a href="#regions">Regions</a>
     </nav>
   </header>
 
@@ -24,7 +27,7 @@
       <div class="hero-copy">
         <p class="eyebrow">Satellite-derived · shallow water · 0–30 m</p>
         <h1>Reading depth<br>from <em>light.</em></h1>
-        <p class="lede">A comparative study of classical and variational quantum models for estimating coastal depth from blue and green satellite reflectance.</p>
+        <p class="lede">A comparative study of classical regression, variational quantum regression, and three implemented QSVR pathways for estimating coastal depth from blue and green satellite reflectance.</p>
         <div class="hero-actions"><a class="button" href="#results">Explore results <span>↓</span></a><span class="sample-note">4,548 shallow-water observations</span></div>
       </div>
       <div class="sonar" aria-label="Abstract bathymetric depth visualization">
@@ -34,7 +37,7 @@
       <div class="hero-index"><span>LAT 25.5682</span><span>LON 54.3719</span><span>R² 0.4836</span></div>
     </section>
 
-    <section class="ticker" aria-label="Project highlights"><div><span>06 spectral features</span><span>08 regression models</span><span>03 coastal regions</span><span>01 shared objective</span><span>06 spectral features</span><span>08 regression models</span></div></section>
+    <section class="ticker" aria-label="Project highlights"><div><span>06 spectral features</span><span>08 benchmarked models</span><span>03 QSVR experiments</span><span>03 coastal regions</span><span>06 spectral features</span><span>08 benchmarked models</span></div></section>
 
     <section class="intro shell section">
       <p class="section-no">01 / THE QUESTION</p>
@@ -59,7 +62,7 @@
         <ol class="steps">
           <li><span>01</span><div><b>Filter</b><p>Restrict observations to the 0–30 m shallow-water range.</p></div></li>
           <li><span>02</span><div><b>Engineer</b><p>Blue, green, log transforms, band ratio, and Stumpf ratio.</p></div></li>
-          <li><span>03</span><div><b>Train</b><p>Five classical regressors and three variational quantum approaches.</p></div></li>
+          <li><span>03</span><div><b>Train</b><p>Five classical regressors, three VQR architectures, and three QSVR kernel methods.</p></div></li>
           <li><span>04</span><div><b>Evaluate</b><p>Compare error in metres and explained variance on held-out data.</p></div></li>
         </ol>
       </div>
@@ -84,8 +87,47 @@
       </div>
     </section>
 
+    <section class="qsvr section" id="qsvr">
+      <div class="qsvr-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="shell qsvr-layout">
+        <div class="qsvr-intro">
+          <p class="section-no">06 / QSVR EXPERIMENTS</p>
+          <span class="status-pill"><i></i> Implemented · benchmark pending</span>
+          <h2>Three ways to put a quantum kernel to work.</h2>
+          <p>QSVR keeps the familiar support-vector regression objective while replacing the classical similarity measure with a quantum kernel. All three methods now live in <code>QSVR_Methods.ipynb</code>; full benchmark outputs have not yet been saved.</p>
+        </div>
+        <div class="qsvr-method-grid" aria-label="Separate QSVR methods">
+          <article class="qsvr-method-card" id="qsvr-m1">
+            <div class="method-card-top"><span>M1</span><i>Standalone</i></div>
+            <p class="panel-tag">Non-entangled baseline</p>
+            <h3>Local Fidelity Kernel</h3>
+            <p>Independent Z feature-map encoding with state fidelity supplied to a precomputed-kernel SVR.</p>
+            <dl><div><dt>Feature map</dt><dd>Z map · 6 qubits · 2 reps</dd></div><div><dt>Kernel</dt><dd>Quantum-state fidelity</dd></div></dl>
+            <code>QSVR_M1.ipynb</code>
+          </article>
+          <article class="qsvr-method-card" id="qsvr-m2">
+            <div class="method-card-top"><span>M2</span><i>Standalone</i></div>
+            <p class="panel-tag">Pairwise quantum interactions</p>
+            <h3>Entangled Fidelity Kernel</h3>
+            <p>A linearly entangled ZZ feature map captures neighbouring spectral interactions before fidelity evaluation.</p>
+            <dl><div><dt>Feature map</dt><dd>ZZ map · linear entanglement</dd></div><div><dt>Kernel</dt><dd>Entangled state fidelity</dd></div></dl>
+            <code>QSVR_M2.ipynb</code>
+          </article>
+          <article class="qsvr-method-card" id="qsvr-m3">
+            <div class="method-card-top"><span>M3</span><i>Standalone</i></div>
+            <p class="panel-tag">Quantum projection</p>
+            <h3>Projected Quantum Kernel</h3>
+            <p>Twelve Pauli expectations form a quantum signature used by a median-bandwidth classical RBF kernel.</p>
+            <dl><div><dt>Feature map</dt><dd>Angle embedding · circular CNOTs</dd></div><div><dt>Kernel</dt><dd>RBF over quantum features</dd></div></dl>
+            <code>QSVR_M3.ipynb</code>
+          </article>
+        </div>
+      </div>
+      <div class="shell experiment-note"><span>Independent execution</span><p>Each method now has its own imports, data preparation, kernel construction, SVR fit, metrics, and prediction plot. They can be executed in any order without relying on another QSVR notebook.</p></div>
+    </section>
+
     <section class="caveat shell section">
-      <p class="section-no">06 / READ THIS HONESTLY</p>
+      <p class="section-no">07 / READ THIS HONESTLY</p>
       <div><h2>A promising experiment,<br>not yet an operational map.</h2><p>The current evidence uses one random split. Spatially adjacent observations may appear in both train and test sets, making performance optimistic.</p></div>
       <ul><li>Dataset provenance and depth units still need verification.</li><li>Spatial cross-validation is the essential next test.</li><li>Reported error remains roughly 5–6.5 m across a 30 m range.</li></ul>
     </section>
