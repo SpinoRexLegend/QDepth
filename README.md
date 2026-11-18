@@ -8,13 +8,10 @@ This project estimates shallow-water depth from satellite-derived spectral featu
 
 | Role | Name | Register number |
 |---|---|---|
-| Team member 1 | `[Add name]` | `[Add register number]` |
-| Team member 2 | `[Add name]` | `[Add register number]` |
-| Team member 3 | `[Add name]` | `[Add register number]` |
-| Team member 4 | `[Add name]` | `[Add register number]` |
-| Faculty guide | `[Add faculty guide]` | — |
-
-> Replace the bracketed fields before submission. These details were not present in the repository.
+| Team member 1 | `Aritra Maji` | `RA2411003012124` |
+| Team member 2 | `Sreejit Hait` | `RA2411003012112` |
+| Team member 3 | `Vaibhav Shrivastava` | `RA2411003012158` |
+| Team member 4 | `Tirath Kumar` | `RA2411003012127` |
 
 ## 2. Problem Statement
 
