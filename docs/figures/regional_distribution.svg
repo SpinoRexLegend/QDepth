@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="410" viewBox="0 0 1000 410" role="img" aria-labelledby="title desc">
+  <title id="title">Regional distribution of shallow-water bathymetry observations</title>
+  <desc id="desc">A bar chart showing 4067 Arabian Sea and Gulf samples, 54 Strait of Hormuz samples, and 427 Bay of Bengal samples.</desc>
+  <rect width="1000" height="410" fill="#071724"/>
+  <text x="48" y="50" fill="#f5fbff" font-family="Arial, sans-serif" font-size="25" font-weight="700">Geographic Coverage · 0–30 m Depth</text>
+  <text x="48" y="78" fill="#9db5c5" font-family="Arial, sans-serif" font-size="14">4,548 observations grouped by longitude; bar width represents sample count.</text>
+  <line x1="255" y1="115" x2="255" y2="345" stroke="#5f7d8e"/>
+  <line x1="255" y1="345" x2="945" y2="345" stroke="#5f7d8e"/>
+  <line x1="409" y1="115" x2="409" y2="345" stroke="#1e4357"/>
+  <line x1="563" y1="115" x2="563" y2="345" stroke="#1e4357"/>
+  <line x1="717" y1="115" x2="717" y2="345" stroke="#1e4357"/>
+  <line x1="871" y1="115" x2="871" y2="345" stroke="#1e4357"/>
+  <g fill="#8eabba" font-family="Arial" font-size="12">
+    <text x="255" y="368" text-anchor="middle">0</text><text x="409" y="368" text-anchor="middle">1,000</text>
+    <text x="563" y="368" text-anchor="middle">2,000</text><text x="717" y="368" text-anchor="middle">3,000</text>
+    <text x="871" y="368" text-anchor="middle">4,000</text>
+  </g>
+  <g fill="#dceaf2" font-family="Arial" font-size="15">
+    <text x="235" y="158" text-anchor="end">Arabian Sea / Gulf</text>
+    <text x="235" y="233" text-anchor="end">Strait of Hormuz</text>
+    <text x="235" y="308" text-anchor="end">Bay of Bengal</text>
+  </g>
+  <rect x="255" y="137" width="626" height="30" rx="8" fill="#307af2"/><text x="894" y="158" fill="#dbe9ff" font-family="Arial" font-size="14" font-weight="700">4,067 · 89.4%</text>
+  <rect x="255" y="212" width="9" height="30" rx="4" fill="#35d58a"/><text x="278" y="233" fill="#dfffea" font-family="Arial" font-size="14" font-weight="700">54 · 1.2%</text>
+  <rect x="255" y="287" width="66" height="30" rx="8" fill="#ffab3d"/><text x="335" y="308" fill="#ffecd3" font-family="Arial" font-size="14" font-weight="700">427 · 9.4%</text>
+  <text x="48" y="395" fill="#7895a7" font-family="Arial" font-size="12">Rules: 48°E &lt; Arabian &lt; 60°E · 65°E &lt; Hormuz &lt; 70°E · Bay of Bengal ≥ 70°E</text>
+</svg>
